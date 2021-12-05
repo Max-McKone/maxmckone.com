@@ -42,9 +42,9 @@
   h4,
   h5,
   h6 {
-    margin-top: 250px;
-    margin-bottom: 100px;
-    margin-left: 150px;
+    margin-top: 15%;
+    margin-left: 15%;
+    margin-bottom: 5%;
     display: flex;
     font-size: 21px;
     text-align: left;
@@ -59,7 +59,7 @@
     text-align: left;
     line-height: 1.6;
     margin-top: 25px;
-    margin-left: 250px;
+    margin-left: 20%;
     margin-bottom: 20px;
     font-size: 18px;
     color:rgb(51, 51, 51);
@@ -99,9 +99,6 @@
     h4,
     h5,
     h6 {
-      margin-top: 100px;
-      margin-bottom: 100px;
-      margin-left: 15px;
       display: flex;
       font-size: 21px;
       text-align: left;
@@ -156,9 +153,7 @@
     h4,
     h5,
     h6 {
-      margin-top: 100px;
-      margin-bottom: 100px;
-      margin-left: 15px;
+      margin: 5%;
       display: flex;
       font-size: 21px;
       text-align: left;
@@ -186,7 +181,7 @@
   
     .footer {
       position: fixed;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
       left: 0;
       bottom: 0;
       width: 100%;
