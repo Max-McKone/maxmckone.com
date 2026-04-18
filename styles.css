@@ -1,77 +1,366 @@
+@font-face {
+    font-family: 'Pixeland';
+    src: url('fonts/Pixeland.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Pixelary';
+    src: url('fonts/Pixelary.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'PPfraktion';
+    src: url('fonts/PPFraktion/Sans/PPFraktionSans-Light.otf') format('opentype');
+    font-weight: 100 400;
+}
+
+@font-face {
+    font-family: 'PPfraktion';
+    src: url('fonts/PPFraktion/Sans/PPFraktionSans-Bold.otf') format('opentype');
+    font-weight: 500 900;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pixelatedFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.2;
+    }
+
+    40% {
+        opacity: 0.4;
+    }
+
+    60% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 body {
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'PPfraktion', sans-serif;
     line-height: 1.8;
     margin: 0;
     padding: 0;
     color: #333;
     background-color: #ffffff;
+    cursor: crosshair;
 }
 
-main {
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+#hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-snap-align: start;
+    animation: fadeIn 0.8s ease-in;
+    padding-left: 4rem;
+}
+
+#hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    animation: fadeIn 1.2s ease-in;
+}
+
+.hero-overlay {
+    text-align: left;
+    max-width: 600px;
+    animation: pixelatedFadeIn 1.2s steps(5) 0.4s both;
+}
+
+.contrast-text {
+    color: white;
+}
+
+.hero-overlay h1.contrast-text {
+    color: rgba(210, 156, 38, 1);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    mix-blend-mode: normal;
+}
+
+.hero-overlay p.contrast-text {
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-overlay h1 {
+    font-family: 'PPfraktion', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: rgba(210, 156, 38, 1);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+    margin-top: 0;
+    font-weight: 700;
+}
+
+.hero-overlay p {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 200;
 }
 
 section {
-    margin-bottom: 3rem;
+    padding: 4rem 2rem;
+    scroll-snap-align: start;
 }
 
-.intro {
-    font-size: 2.5rem;
-    margin-bottom: 2.0rem;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.section-title {
-    font-size: 2.0rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+#topology {
+    background-color: rgba(23, 132, 107, 0.1);
+    animation: fadeInUp 0.7s ease-out 0.3s both;
+}
+
+#topology h2 {
     text-align: center;
+    font-size: 2.5rem;
+    color: rgba(23, 132, 107, 1);
+    margin-bottom: 2rem;
+    font-weight: 800;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-    font-size: 2.0rem;
-    margin: 0;
+#topology p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
 }
 
-ul li {
-    margin: 0.8rem 0;
-    padding: 0.5rem;
+
+
+#philosophy {
+    background-color: rgba(182, 191, 55, 0.1);
+    animation: fadeInUp 0.7s ease-out 0.6s both;
 }
 
-.italic {
-    font-style: italic;
+#philosophy h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: rgba(182, 191, 55, 1);
+    margin-bottom: 2rem;
+    font-weight: 600;
 }
 
-.bold {
-    font-weight: bold;
+#philosophy p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+    font-weight: 200;
+}
+
+#booking {
+    background-color: rgba(215, 114, 32, 0.1);
+    text-align: center;
+    animation: fadeInUp 0.7s ease-out 0.9s both;
+}
+
+#booking h2 {
+    font-size: 2.5rem;
+    color: rgba(215, 114, 32, 1);
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+#booking p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 100;
 }
 
 .button {
     display: inline-block;
-    padding: 0.8rem 1.6rem;
-    background-color: #fff;
-    color: #333;
+    padding: 1rem 2rem;
+    background-color: rgba(210, 156, 38, 1);
+    color: white;
     text-decoration: none;
-    border: 2px solid #333;
-    border-radius: 25px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .button:hover {
-    background-color: #333;
-    color: #fff;
+    background-color: rgba(199, 63, 38, 1);
 }
 
-footer {
+.mountain-path {
+    position: relative;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.mountain-path::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg,
+            rgba(23, 132, 107, 0.4) 0%,
+            rgba(182, 191, 55, 0.4) 25%,
+            rgba(199, 63, 38, 0.4) 50%,
+            rgba(215, 114, 32, 0.4) 75%,
+            rgba(210, 156, 38, 0.4) 100%);
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px rgba(210, 156, 38, 0.6);
+}
+
+.path-step {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 600px;
+    margin-left: calc((var(--step) - 1) * 30px);
+}
+
+.topic-marker {
+    background: white;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 1rem 0;
-    background-color: #f4f4f4;
-    color: #333;
-    font-size: 0.9rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: rgba(199, 63, 38, 1);
+    border-left: 6px solid rgba(210, 156, 38, 1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.topic-marker::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle, rgba(210, 156, 38, 1), rgba(215, 114, 32, 0.8));
+    box-shadow: 0 0 10px rgba(210, 156, 38, 0.8);
+}
+
+.topic-marker:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(210, 156, 38, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.peak {
+    position: relative;
+    z-index: 1;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: rgba(210, 156, 38, 1);
+    margin-top: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(210, 156, 38, 0.1), rgba(215, 114, 32, 0.1));
+    border: 2px dashed rgba(210, 156, 38, 0.5);
+}
+
+.ascii-separator {
+    text-align: center;
+    padding: 2rem 0;
+    font-family: 'PPfraktion', monospace;
+    font-size: 0.8rem;
+    color: rgba(210, 156, 38, 0.7);
+    line-height: 1.2;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.ascii-separator pre {
+    display: inline-block;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    #hero {
+        padding-left: 2rem;
+    }
+
+    .hero-overlay h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-overlay p {
+        font-size: 1.2rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+
+    .path-step {
+        margin-left: 0 !important;
+        max-width: 100%;
+    }
+
+    .topic-marker::before {
+        left: -20px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .peak {
+        font-size: 1.3rem;
+        padding: 1.5rem;
+    }
+
+    .mountain-path {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
 }
