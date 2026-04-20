@@ -78,10 +78,12 @@ body {
     line-height: 1.8;
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #000;
     background-color: #ffffff;
     cursor: crosshair;
 }
+
+/* ── Hero ──────────────────────────────── */
 
 #hero {
     position: relative;
@@ -117,7 +119,7 @@ body {
 }
 
 .hero-overlay h1.contrast-text {
-    color: rgba(210, 156, 38, 1);
+    color: rgb(255, 255, 255);
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     mix-blend-mode: normal;
 }
@@ -129,13 +131,14 @@ body {
 
 .hero-overlay h1 {
     font-family: 'PPfraktion', sans-serif;
-    font-size: 3.5rem;
+    font-size: 5.5rem;
     margin-bottom: 1rem;
-    color: rgba(210, 156, 38, 1);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 8px rgb(255, 255, 255);
+    letter-spacing: 4px;
     margin-top: 0;
-    font-weight: 700;
+    font-weight: 600;
+    font-style: bold;
 }
 
 .hero-overlay p {
@@ -144,9 +147,41 @@ body {
     font-weight: 200;
 }
 
+/* ── Sections ──────────────────────────── */
+
 section {
     padding: 4rem 2rem;
     scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Frosted video background shared by content sections */
+.section-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: blur(6px) saturate(0.7);
+    transform: scale(1.05);
+    animation: pixelatedFadeIn 1.2s steps(5) 0.4s both;
+}
+
+.section-frost {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.section-inner {
+    position: relative;
+    z-index: 2;
 }
 
 .container {
@@ -155,14 +190,14 @@ section {
 }
 
 #topology {
-    background-color: rgba(23, 132, 107, 0.1);
     animation: fadeInUp 0.7s ease-out 0.3s both;
+    min-height: 50vh;
 }
 
 #topology h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: rgba(23, 132, 107, 1);
+    color: #000;
     margin-bottom: 2rem;
     font-weight: 800;
 }
@@ -174,17 +209,17 @@ section {
     font-weight: 300;
 }
 
-
-
 #philosophy {
-    background-color: rgba(182, 191, 55, 0.1);
     animation: fadeInUp 0.7s ease-out 0.6s both;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
 }
 
 #philosophy h2 {
     text-align: center;
     font-size: 2.5rem;
-    color: rgba(182, 191, 55, 1);
+    color: #000;
     margin-bottom: 2rem;
     font-weight: 600;
 }
@@ -198,14 +233,17 @@ section {
 }
 
 #booking {
-    background-color: rgba(215, 114, 32, 0.1);
     text-align: center;
     animation: fadeInUp 0.7s ease-out 0.9s both;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #booking h2 {
     font-size: 2.5rem;
-    color: rgba(215, 114, 32, 1);
+    color: #000;
     margin-bottom: 1rem;
     font-weight: 900;
 }
@@ -216,11 +254,13 @@ section {
     font-weight: 100;
 }
 
+/* ── Button ────────────────────────────── */
+
 .button {
     display: inline-block;
     padding: 1rem 2rem;
-    background-color: rgba(210, 156, 38, 1);
-    color: white;
+    background-color: #000;
+    color: #fff;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 600;
@@ -229,8 +269,10 @@ section {
 }
 
 .button:hover {
-    background-color: rgba(199, 63, 38, 1);
+    background-color: #333;
 }
+
+/* ── Mountain path ─────────────────────── */
 
 .mountain-path {
     position: relative;
@@ -247,15 +289,13 @@ section {
     left: 50%;
     top: 0;
     bottom: 0;
-    width: 6px;
+    width: 4px;
     background: linear-gradient(180deg,
-            rgba(23, 132, 107, 0.4) 0%,
-            rgba(182, 191, 55, 0.4) 25%,
-            rgba(199, 63, 38, 0.4) 50%,
-            rgba(215, 114, 32, 0.4) 75%,
-            rgba(210, 156, 38, 0.4) 100%);
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.35) 50%,
+            rgba(0, 0, 0, 0.15) 100%);
     transform: translateX(-50%);
-    box-shadow: 0 0 15px rgba(210, 156, 38, 0.6);
+    box-shadow: none;
 }
 
 .path-step {
@@ -269,12 +309,12 @@ section {
 .topic-marker {
     background: white;
     padding: 1.5rem 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
     font-weight: 500;
     font-size: 1.1rem;
-    color: rgba(199, 63, 38, 1);
-    border-left: 6px solid rgba(210, 156, 38, 1);
+    color: #000;
+    border-left: 6px solid #000;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -287,14 +327,14 @@ section {
     transform: translateY(-50%);
     width: 24px;
     height: 24px;
-    background: radial-gradient(circle, rgba(210, 156, 38, 1), rgba(215, 114, 32, 0.8));
-    box-shadow: 0 0 10px rgba(210, 156, 38, 0.8);
+    background: #000;
+    box-shadow: none;
 }
 
 .topic-marker:hover {
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 6px 20px rgba(210, 156, 38, 0.3);
-    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: #fff;
 }
 
 .peak {
@@ -303,20 +343,21 @@ section {
     font-size: 1.8rem;
     font-weight: 700;
     text-align: center;
-    color: rgba(210, 156, 38, 1);
+    color: #000;
     margin-top: 2rem;
     padding: 2rem;
-    background: linear-gradient(135deg, rgba(210, 156, 38, 0.1), rgba(215, 114, 32, 0.1));
-    border: 2px dashed rgba(210, 156, 38, 0.5);
+    background: rgba(0, 0, 0, 0.03);
+    border: 2px dashed rgba(0, 0, 0, 0.3);
 }
+
+/* ── ASCII separator ───────────────────── */
 
 .ascii-separator {
     text-align: center;
-    padding: 2rem 0;
-    font-family: 'PPfraktion', monospace;
-    font-size: 0.8rem;
-    color: rgba(210, 156, 38, 0.7);
-    line-height: 1.2;
+    padding: 3rem 2rem;
+    font-size: 0.95rem;
+    color: rgba(0, 0, 0, 0.55);
+    line-height: 1.5;
     white-space: pre;
     overflow-x: auto;
 }
@@ -324,7 +365,82 @@ section {
 .ascii-separator pre {
     display: inline-block;
     margin: 0;
+    font-family: 'Pixelary', sans-serif;
 }
+
+/* ── Pixelary utility ──────────────────── */
+
+.pixelary-text {
+    font-family: 'Pixelary', sans-serif !important;
+    letter-spacing: 1px;
+}
+
+/* ── Footer ────────────────────────────── */
+
+footer {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    background: #fff;
+}
+
+.pixelary-footer {
+    font-family: 'Pixelary', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: #000;
+}
+
+/* ── Corner decorations ────────────────── */
+
+.corner-deco {
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Bottom-left: original orientation */
+.corner-bl {
+    bottom: 1rem;
+    left: 1rem;
+    transform: rotate(0deg);
+}
+
+/* Top-left: 90° clockwise */
+.corner-tl {
+    top: 1rem;
+    left: 1rem;
+    transform: rotate(90deg);
+}
+
+/* Top-right: 180° */
+.corner-tr {
+    top: 1rem;
+    right: 1rem;
+    transform: rotate(180deg);
+}
+
+/* Bottom-right: 270° clockwise */
+.corner-br {
+    bottom: 1rem;
+    right: 1rem;
+    transform: rotate(270deg);
+}
+
+/* ── Legend decoration ────────────────── */
+
+.legend_deco {
+    position: absolute;
+    top: 5.5rem;
+    right: 5rem;
+    z-index: 10;
+    pointer-events: none;
+    width: 120px;
+    height: 120px;
+}
+
+/* ── Responsive ────────────────────────── */
 
 @media (max-width: 768px) {
     #hero {
@@ -332,7 +448,7 @@ section {
     }
 
     .hero-overlay h1 {
-        font-size: 2.2rem;
+        font-size: 2.8rem;
     }
 
     .hero-overlay p {
