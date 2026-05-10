@@ -290,31 +290,6 @@ section {
     overflow: hidden;
 }
 
-.mountain-path::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background: linear-gradient(180deg,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 0.35) 50%,
-            rgba(0, 0, 0, 0.15) 100%);
-    transform: translateX(-50%);
-    box-shadow: none;
-}
-
-.mountain-path::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 7rem;
-    pointer-events: none;
-}
-
 .path-step {
     position: relative;
     z-index: 1;
