@@ -1,77 +1,482 @@
+@font-face {
+    font-family: 'Pixeland';
+    src: url('fonts/Pixeland.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Pixelary';
+    src: url('fonts/Pixelary.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'PPfraktion';
+    src: url('fonts/PPFraktion/Sans/PPFraktionSans-Light.otf') format('opentype');
+    font-weight: 100 400;
+}
+
+@font-face {
+    font-family: 'PPfraktion';
+    src: url('fonts/PPFraktion/Sans/PPFraktionSans-Bold.otf') format('opentype');
+    font-weight: 500 900;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pixelatedFadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.2;
+    }
+
+    40% {
+        opacity: 0.4;
+    }
+
+    60% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 body {
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'PPfraktion', sans-serif;
     line-height: 1.8;
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #000;
     background-color: #ffffff;
+    cursor: crosshair;
 }
 
-main {
-    padding: 2rem;
-    max-width: 800px;
+/* ── Hero ──────────────────────────────── */
+
+#hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-snap-align: start;
+    animation: fadeIn 0.8s ease-in;
+    padding-left: 4rem;
+}
+
+#hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    animation: fadeIn 1.2s ease-in;
+}
+
+.hero-overlay {
+    text-align: left;
+    max-width: 600px;
+    animation: pixelatedFadeIn 1.2s steps(5) 0.4s both;
+}
+
+.contrast-text {
+    color: white;
+}
+
+.hero-overlay h1.contrast-text {
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    mix-blend-mode: normal;
+}
+
+.hero-overlay p.contrast-text {
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-overlay h1 {
+    font-family: 'PPfraktion', sans-serif;
+    font-size: 5.5rem;
+    margin-bottom: 1rem;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 8px rgb(255, 255, 255);
+    letter-spacing: 4px;
+    margin-top: 0;
+    font-weight: 600;
+    font-style: bold;
+}
+
+.hero-overlay p {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 200;
+}
+
+/* ── Sections ──────────────────────────── */
+
+section {
+    padding: 4rem 2rem;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Frosted video background shared by content sections */
+.section-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: blur(6px) saturate(0.7);
+    transform: scale(1.05);
+    animation: pixelatedFadeIn 1.2s steps(5) 0.4s both;
+}
+
+.section-frost {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.section-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-section {
-    margin-bottom: 3rem;
+#topology {
+    animation: fadeInUp 0.7s ease-out 0.3s both;
+    min-height: 50vh;
 }
 
-.intro {
-    font-size: 2.5rem;
-    margin-bottom: 2.0rem;
-}
-
-.section-title {
-    font-size: 2.0rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+#topology h2 {
     text-align: center;
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 2rem;
+    font-weight: 800;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-    font-size: 2.0rem;
-    margin: 0;
+#topology p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
 }
 
-ul li {
-    margin: 0.8rem 0;
-    padding: 0.5rem;
+#philosophy {
+    animation: fadeInUp 0.7s ease-out 0.6s both;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
 }
 
-.italic {
-    font-style: italic;
+#philosophy h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 2rem;
+    font-weight: 600;
 }
 
-.bold {
-    font-weight: bold;
+#philosophy p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+    font-weight: 200;
 }
+
+#booking {
+    text-align: center;
+    animation: fadeInUp 0.7s ease-out 0.9s both;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#booking h2 {
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+#booking p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 100;
+}
+
+/* ── Button ────────────────────────────── */
 
 .button {
     display: inline-block;
-    padding: 0.8rem 1.6rem;
-    background-color: #fff;
-    color: #333;
+    padding: 1rem 2rem;
+    background-color: #000;
+    color: #fff;
     text-decoration: none;
-    border: 2px solid #333;
-    border-radius: 25px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .button:hover {
     background-color: #333;
-    color: #fff;
 }
+
+/* ── Mountain path ─────────────────────── */
+
+.mountain-path {
+    position: relative;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.mountain-path::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.35) 50%,
+            rgba(0, 0, 0, 0.15) 100%);
+    transform: translateX(-50%);
+    box-shadow: none;
+}
+
+.path-step {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 600px;
+    margin-left: calc((var(--step) - 1) * 30px);
+}
+
+.topic-marker {
+    background: white;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #000;
+    border-left: 6px solid #000;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.topic-marker::before {
+    content: '';
+    position: absolute;
+    left: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: #000;
+    box-shadow: none;
+}
+
+.topic-marker:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: #fff;
+}
+
+.peak {
+    position: relative;
+    z-index: 1;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: #000;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.03);
+    border: 2px dashed rgba(0, 0, 0, 0.3);
+}
+
+/* ── ASCII separator ───────────────────── */
+
+.ascii-separator {
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.95rem;
+    color: rgba(0, 0, 0, 0.55);
+    line-height: 1.5;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.ascii-separator pre {
+    display: inline-block;
+    margin: 0;
+    font-family: 'Pixelary', sans-serif;
+}
+
+/* ── Pixelary utility ──────────────────── */
+
+.pixelary-text {
+    font-family: 'Pixelary', sans-serif !important;
+    letter-spacing: 1px;
+}
+
+/* ── Footer ────────────────────────────── */
 
 footer {
     text-align: center;
-    padding: 1rem 0;
-    background-color: #f4f4f4;
-    color: #333;
-    font-size: 0.9rem;
+    padding: 1.5rem 2rem;
+    background: #fff;
+}
+
+.pixelary-footer {
+    font-family: 'Pixelary', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: #000;
+}
+
+/* ── Corner decorations ────────────────── */
+
+.corner-deco {
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Bottom-left: original orientation */
+.corner-bl {
+    bottom: 1rem;
+    left: 1rem;
+    transform: rotate(0deg);
+}
+
+/* Top-left: 90° clockwise */
+.corner-tl {
+    top: 1rem;
+    left: 1rem;
+    transform: rotate(90deg);
+}
+
+/* Top-right: 180° */
+.corner-tr {
+    top: 1rem;
+    right: 1rem;
+    transform: rotate(180deg);
+}
+
+/* Bottom-right: 270° clockwise */
+.corner-br {
+    bottom: 1rem;
+    right: 1rem;
+    transform: rotate(270deg);
+}
+
+/* ── Legend decoration ────────────────── */
+
+.legend_deco {
+    position: absolute;
+    top: 5.5rem;
+    right: 5rem;
+    z-index: 10;
+    pointer-events: none;
+    width: 120px;
+    height: 120px;
+}
+
+/* ── Responsive ────────────────────────── */
+
+@media (max-width: 768px) {
+    #hero {
+        padding-left: 2rem;
+    }
+
+    .hero-overlay h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-overlay p {
+        font-size: 1.2rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+
+    .path-step {
+        margin-left: 0 !important;
+        max-width: 100%;
+    }
+
+    .topic-marker::before {
+        left: -20px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .peak {
+        font-size: 1.3rem;
+        padding: 1.5rem;
+    }
+
+    .mountain-path {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
 }
