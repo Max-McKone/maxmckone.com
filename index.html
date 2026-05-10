@@ -14,7 +14,7 @@
 
 <body>
     <section id="hero">
-        <video autoplay muted loop id="hero-video">
+        <video autoplay muted loop playsinline id="hero-video">
             <source src="images/topology_loop.mov" type="video/quicktime">
             Your browser does not support the video tag.
         </video>
@@ -34,10 +34,9 @@
     </div>
 
     <section id="topology">
-        <video autoplay muted loop class="section-video">
+        <video autoplay muted loop playsinline class="section-video">
             <source src="images/topology_loop.mov" type="video/quicktime">
         </video>
-        <div class="section-frost"></div>
         <img src="images/corner_deco.png" class="corner-deco corner-bl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
@@ -45,8 +44,7 @@
         <img src="images/corner_deco.png" class="corner-deco corner-br" alt="">
         <div class="container section-inner">
             <h2>Topology: The Navigation</h2>
-            <p>I teach anyone interested in navigating the
-                ever-changing landscape of technology.</p>
+            <p>I teach anyone interested in navigating the ever-changing landscape of technology.</p>
             <p>Explore the vast terrain of technology with guided paths through:</p>
             <div class="mountain-path">
                 <div class="path-step" style="--step: 1;">
@@ -67,7 +65,7 @@
     </div>
 
     <section id="philosophy">
-        <video autoplay muted loop class="section-video">
+        <video autoplay muted loop playsinline class="section-video">
             <source src="images/topology_loop.mov" type="video/quicktime">
         </video>
         <div class="section-frost"></div>
@@ -92,7 +90,7 @@
     </div>
 
     <section id="collaboration">
-        <video autoplay muted loop class="section-video">
+        <video autoplay muted loop playsinline class="section-video">
             <source src="images/topology_loop.mov" type="video/quicktime">
         </video>
         <div class="section-frost"></div>
@@ -104,9 +102,11 @@
         <div class="container section-inner">
             <h2>Lets work on something together</h2>
             <p>Any technical project or issues. From web development to AI tools to app development.</p>
-            <div class="drop-zone">
-                <p>Your project here</p>
+            <div class="drop-zone" id="dropZone" tabindex="0">
+                <p id="dropText">Your project here</p>
+                <small id="dropHint">.pdf, .png, .jpg limit 20MB</small>
             </div>
+            <input type="file" id="collabUpload" accept=".pdf,.png,.jpg,.jpeg" hidden>
         </div>
     </section>
 
@@ -115,7 +115,7 @@
     </div>
 
     <section id="booking">
-        <video autoplay muted loop class="section-video">
+        <video autoplay muted loop playsinline class="section-video">
             <source src="images/topology_loop.mov" type="video/quicktime">
         </video>
         <div class="section-frost"></div>
@@ -134,6 +134,78 @@
     <footer class="pixelary-footer">
         <p>&copy; 2026 Max McKone. All rights reserved.</p>
     </footer>
+
+    <script>
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('collabUpload');
+        const dropText = document.getElementById('dropText');
+        const dropHint = document.getElementById('dropHint');
+        let selectedFile = null;
+
+        const MAX_UPLOAD_BYTES = 20 * 1024 * 1024;
+        const ACCEPTED_TYPES = ['application/pdf', 'image/png', 'image/jpeg'];
+
+        function updateDropZone(file) {
+            if (file) {
+                dropText.textContent = `Ready to send: ${file.name}`;
+                dropHint.textContent = 'Click here to email your file now.';
+                selectedFile = file;
+            } else {
+                dropText.textContent = 'Your project here';
+                dropHint.textContent = '.pdf, .png, .jpg limit 20MB';
+                selectedFile = null;
+            }
+        }
+
+        function validFile(file) {
+            return file && ACCEPTED_TYPES.includes(file.type) && file.size <= MAX_UPLOAD_BYTES;
+        }
+
+        function openMail(file) {
+            const subject = 'Tech Topology 1-on-1 Booking';
+            const body = `Hi Max,%0D%0A%0D%0APlease find my project file attached: ${encodeURIComponent(file.name)}%0D%0A%0D%0AThanks!`;
+            const mailto = `mailto:max@maxmckone.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+            window.location.href = mailto;
+        }
+
+        function handleFiles(files) {
+            if (!files || !files.length) return;
+            const file = files[0];
+            if (!validFile(file)) {
+                alert('Please drop a valid .pdf, .png, or .jpg file under 20MB.');
+                return;
+            }
+            updateDropZone(file);
+            openMail(file);
+        }
+
+        dropZone.addEventListener('click', () => {
+            if (selectedFile) {
+                openMail(selectedFile);
+            } else {
+                fileInput.click();
+            }
+        });
+
+        dropZone.addEventListener('dragover', event => {
+            event.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+
+        dropZone.addEventListener('drop', event => {
+            event.preventDefault();
+            dropZone.classList.remove('drag-over');
+            handleFiles(event.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', () => {
+            handleFiles(fileInput.files);
+        });
+    </script>
 
 </body>
 
