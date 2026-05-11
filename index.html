@@ -13,6 +13,15 @@
 </head>
 
 <body>
+    <!-- Floating section legend -->
+    <nav id="section-legend" aria-label="Page sections">
+        <span class="legend-item active" data-section="hero">Home</span>
+        <span class="legend-item" data-section="topology">Topology</span>
+        <span class="legend-item" data-section="philosophy">Philosophy</span>
+        <span class="legend-item" data-section="collaboration">Collaboration</span>
+        <span class="legend-item" data-section="booking">Booking</span>
+    </nav>
+
     <section id="hero">
         <video autoplay muted loop playsinline id="hero-video">
             <source src="images/topology_loop.mov" type="video/quicktime">
@@ -21,16 +30,16 @@
         <img src="images/corner_deco.png" class="corner-deco corner-bl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
-        <div class="legend_deco"></div>
         <img src="images/corner_deco.png" class="corner-deco corner-br" alt="">
         <div class="hero-overlay">
-            <h1 class="contrast-text">maxmckone</h1>
-            <p class="contrast-text">Lets navigate the tech world together.</p>
+            <h2 class="contrast-text">Max McKone</h2>
+            <h3 class="contrast-text">Software Engineer, consultant, mentor</h3>
+            <h3 class="contrast-text">Lets navigate the tech world together.</h3>
         </div>
     </section>
 
-    <div class="ascii-separator pixelary-text">
-        <pre>© 2026 Max McKone · maxmckone.com</pre>
+    <div class="pixelary-footer">
+        <p>&copy; 2026 Max McKone - maxmckone.com</p>
     </div>
 
     <section id="topology">
@@ -41,7 +50,6 @@
         <img src="images/corner_deco.png" class="corner-deco corner-bl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
-        <div class="legend_deco"></div>
         <img src="images/corner_deco.png" class="corner-deco corner-br" alt="">
         <div class="container section-inner">
             <h2>Topology: The Navigation</h2>
@@ -54,15 +62,22 @@
                 <div class="path-step" style="--step: 2;">
                     <div class="topic-marker">Programming Fundamentals</div>
                 </div>
+                <div class="path-ellipsis">&middot;&middot;&middot;</div>
                 <div class="path-step" style="--step: 3;">
+                    <div class="topic-marker">Cyber Security</div>
+                </div>
+                <div class="path-step" style="--step: 4;">
+                    <div class="topic-marker">Cloud Systems</div>
+                </div>
+                <div class="path-step" style="--step: 5;">
                     <div class="topic-marker">Cutting-Edge AI Tools</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="ascii-separator pixelary-text">
-        <pre>&copy; 2026 Max McKone · maxmckone.com</pre>
+    <div class="pixelary-footer">
+        <p>&copy; 2026 Max McKone - maxmckone.com</p>
     </div>
 
     <section id="philosophy">
@@ -73,7 +88,6 @@
         <img src="images/corner_deco.png" class="corner-deco corner-bl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
-        <div class="legend_deco"></div>
         <img src="images/corner_deco.png" class="corner-deco corner-br" alt="">
         <div class="container section-inner">
             <h2>Philosophy</h2>
@@ -86,8 +100,8 @@
         </div>
     </section>
 
-    <div class="ascii-separator pixelary-text">
-        <pre>&copy; 2026 Max McKone · maxmckone.com</pre>
+    <div class="pixelary-footer">
+        <p>&copy; 2026 Max McKone - maxmckone.com</p>
     </div>
 
     <section id="collaboration">
@@ -98,7 +112,6 @@
         <img src="images/corner_deco.png" class="corner-deco corner-bl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
-        <div class="legend_deco"></div>
         <img src="images/corner_deco.png" class="corner-deco corner-br" alt="">
         <div class="container section-inner">
             <h2>Lets work on something together</h2>
@@ -111,8 +124,8 @@
         </div>
     </section>
 
-    <div class="ascii-separator pixelary-text">
-        <pre>&copy; 2026 Max McKone · maxmckone.com</pre>
+    <div class="pixelary-footer">
+        <p>&copy; 2026 Max McKone - maxmckone.com</p>
     </div>
 
     <section id="booking">
@@ -123,11 +136,10 @@
         <img src="images/corner_deco.png" class="corner-deco corner-bl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
-        <div class="legend_deco"></div>
         <img src="images/corner_deco.png" class="corner-deco corner-br" alt="">
         <div class="container section-inner">
             <h2>1-on-1 Session</h2>
-            <p>Ready to start your tech navigation journey? Let's connect for personalized guidance.</p>
+            <p>Feel free to reach out about any interest or query.</p>
             <a href="mailto:max@maxmckone.com?subject=Tech Topology 1-on-1 Booking" class="button">Reach Out to Book</a>
         </div>
     </section>
@@ -206,6 +218,33 @@
         fileInput.addEventListener('change', () => {
             handleFiles(fileInput.files);
         });
+
+        // ── Section legend scroll tracker ──────────────────────
+        (function () {
+            const legendItems = document.querySelectorAll('#section-legend .legend-item');
+            const sections = Array.from(legendItems).map(item =>
+                document.getElementById(item.dataset.section)
+            ).filter(Boolean);
+
+            function getActive() {
+                const midY = window.scrollY + window.innerHeight / 2;
+                let best = sections[0];
+                for (const sec of sections) {
+                    if (sec.offsetTop <= midY) best = sec;
+                }
+                return best ? best.id : null;
+            }
+
+            function updateLegend() {
+                const activeId = getActive();
+                legendItems.forEach(item => {
+                    item.classList.toggle('active', item.dataset.section === activeId);
+                });
+            }
+
+            window.addEventListener('scroll', updateLegend, { passive: true });
+            updateLegend();
+        })();
     </script>
 
 </body>
