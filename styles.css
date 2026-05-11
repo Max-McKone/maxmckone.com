@@ -78,9 +78,25 @@ body {
     line-height: 1.8;
     margin: 0;
     padding: 0;
-    color: #000;
+    color: #fff;
     background-color: #ffffff;
     cursor: crosshair;
+}
+
+/* Global white text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+small,
+pre,
+li {
+    color: #fff;
+    text-shadow: none;
 }
 
 /* ── Hero ──────────────────────────────── */
@@ -122,42 +138,29 @@ body {
 
 .contrast-text {
     color: white;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    text-shadow: none;
 }
 
 .hero-overlay h1.contrast-text {
     color: #fff;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    text-shadow: none;
     mix-blend-mode: normal;
 }
 
 .hero-overlay p.contrast-text {
     color: #fff;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    text-shadow: none;
 }
 
 .hero-overlay h1 {
     font-family: 'PPfraktion', sans-serif;
     font-size: 5.5rem;
     margin-bottom: 1rem;
-    color: rgb(255, 255, 255);
-    text-shadow: 2px 2px 8px rgb(255, 255, 255);
+    color: #fff;
+    text-shadow: none;
     letter-spacing: 4px;
     margin-top: 0;
     font-weight: 600;
-    font-style: bold;
 }
 
 .hero-overlay p {
@@ -195,7 +198,7 @@ section {
     z-index: 1;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.45);
 }
 
 .section-inner {
@@ -208,24 +211,35 @@ section {
     margin: 0 auto;
 }
 
+/* All section content left-aligned */
+section h2,
+section h3,
+section p,
+section small {
+    text-align: left;
+}
+
 #topology {
-    animation: fadeInUp 0.7s ease-out 0.3s both;
+    animation: fadeInUp 0.7s ease-out 0.6s both;
     min-height: 85vh;
+    display: flex;
+    align-items: center;
 }
 
 #topology h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #000;
-    margin-bottom: 0.75rem;
-    font-weight: 800;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 2rem;
+    font-weight: 600;
 }
 
 #topology p {
-    text-align: center;
     font-size: 1.2rem;
-    margin-bottom: 1.25rem;
-    font-weight: 300;
+    max-width: 800px;
+    margin: 0 0 1.5rem;
+    text-align: left;
+    font-weight: 200;
+    color: #fff;
 }
 
 #philosophy {
@@ -236,9 +250,8 @@ section {
 }
 
 #philosophy h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #000;
+    text-align: left;
+    color: #fff;
     margin-bottom: 2rem;
     font-weight: 600;
 }
@@ -246,23 +259,23 @@ section {
 #philosophy p {
     font-size: 1.2rem;
     max-width: 800px;
-    margin: 0 auto 1.5rem;
-    text-align: center;
+    margin: 0 0 1.5rem;
+    text-align: left;
     font-weight: 200;
+    color: #fff;
 }
 
 #booking {
-    text-align: center;
+    text-align: left;
     animation: fadeInUp 0.7s ease-out 0.9s both;
     min-height: 85vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 #booking h2 {
-    font-size: 2.5rem;
-    color: #000;
+    color: #fff;
     margin-bottom: 1rem;
     font-weight: 900;
 }
@@ -271,6 +284,7 @@ section {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     font-weight: 100;
+    color: #fff;
 }
 
 /* ── Button ────────────────────────────── */
@@ -405,7 +419,7 @@ footer {
     font-family: 'Pixelary', sans-serif;
     font-size: 1.3rem;
     letter-spacing: 2px;
-    color: #000;
+    color: #000 !important;
 }
 
 /* ── Corner decorations ────────────────── */
@@ -490,13 +504,9 @@ footer {
     font-size: 0.6rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.35);
-    text-shadow:
-        -1px -1px 0 rgba(0, 0, 0, 0.25),
-        1px -1px 0 rgba(0, 0, 0, 0.25),
-        -1px 1px 0 rgba(0, 0, 0, 0.25),
-        1px 1px 0 rgba(0, 0, 0, 0.25);
-    transition: color 0.4s ease, letter-spacing 0.3s ease, font-weight 0.3s ease, text-shadow 0.4s ease;
+    color: rgba(255, 255, 255, 0.45);
+    text-shadow: none;
+    transition: color 0.4s ease, letter-spacing 0.3s ease, font-weight 0.3s ease;
     line-height: 1.3;
     font-weight: 300;
 }
@@ -505,11 +515,7 @@ footer {
     color: #fff;
     letter-spacing: 3px;
     font-weight: 600;
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+    text-shadow: none;
 }
 
 /* ── Collaboration section ─────────────── */
@@ -524,8 +530,7 @@ footer {
 
 #collaboration h2 {
     text-align: center;
-    font-size: 2.5rem;
-    color: #000;
+    color: #fff;
     margin-bottom: 2rem;
     font-weight: 600;
 }
