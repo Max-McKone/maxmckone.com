@@ -176,6 +176,8 @@ section {
     scroll-snap-align: start;
     position: relative;
     overflow: hidden;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 /* Frosted video background shared by content sections */
@@ -266,25 +268,7 @@ section small {
 }
 
 #booking {
-    text-align: left;
-    animation: fadeInUp 0.7s ease-out 0.9s both;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-#booking h2 {
-    color: #fff;
-    margin-bottom: 1rem;
-    font-weight: 900;
-}
-
-#booking p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    font-weight: 100;
-    color: #fff;
+    display: none;
 }
 
 /* ── Button ────────────────────────────── */
@@ -422,6 +406,26 @@ footer {
     color: #000 !important;
 }
 
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-socials a {
+    font-family: 'Pixelary', sans-serif;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #000;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-socials a:hover {
+    opacity: 0.6;
+}
+
 /* ── Corner decorations ────────────────── */
 
 @keyframes cornerFloat {
@@ -444,20 +448,25 @@ footer {
     pointer-events: auto;
     opacity: 0.7;
     transition: opacity 0.3s ease, filter 0.3s ease;
+    border-radius: 12px;
 }
 
-.corner-deco:hover {
-    animation: cornerFloat 1.6s ease-in-out infinite;
-    opacity: 1;
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+
+
+/* Bottom-middle: floating arrow pointing down */
+@keyframes arrowFloat {
+    0%, 100% { transform: translateX(-50%) rotate(315deg) translateY(0); }
+    50%      { transform: translateX(-50%) rotate(315deg) translateY(10px); }
 }
 
-/* Bottom-left: original orientation */
-.corner-bl {
-    --corner-rotate: rotate(0deg);
-    bottom: 0.75rem;
-    left: 0.75rem;
-    transform: rotate(0deg);
+.corner-bm {
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) rotate(315deg);
+    animation: arrowFloat 2s ease-in-out infinite;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
 }
 
 /* Top-left: 90° clockwise */
@@ -476,13 +485,7 @@ footer {
     transform: rotate(180deg);
 }
 
-/* Bottom-right: 270° clockwise */
-.corner-br {
-    --corner-rotate: rotate(270deg);
-    bottom: 0.75rem;
-    right: 0.75rem;
-    transform: rotate(270deg);
-}
+
 
 /* ── Section Legend (floating nav indicator) ─── */
 
@@ -529,10 +532,18 @@ footer {
 }
 
 #collaboration h2 {
-    text-align: center;
+    text-align: left;
+    font-size: clamp(2.5rem, 5vw, 5.5rem);
     color: #fff;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 600;
+}
+
+.collaboration-single {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
 }
 
 .drop-zone {
@@ -613,6 +624,15 @@ footer {
     .mountain-path {
         padding: 1rem 0.5rem;
         gap: 0.6rem;
+    }
+
+    .contact-grid {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    #collaboration h2 {
+        font-size: clamp(2.2rem, 8vw, 3.5rem);
     }
 
     .drop-zone {
