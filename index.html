@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>maxmckone.com | Tech Topology Navigation</title>
+    <title>maxmckone.com | tech topology navigation</title>
     <link rel="icon" href="images/favicon.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Boba+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap"
@@ -29,10 +29,12 @@
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-bm" alt="">
-        <div class="hero-overlay">
-            <h2 class="contrast-text">Max McKone</h2>
-            <h3 class="contrast-text">software engineer, consultant, mentor</h3>
-            <h3 class="contrast-text">lets navigate the tech world together.</h3>
+        <div class="container section-inner">
+            <div class="hero-overlay">
+                <h1 class="contrast-text">Max McKone</h1>
+                <p class="contrast-text">software engineer, consultant, mentor<br>lets navigate the tech world together.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -105,12 +107,11 @@
         <div class="section-frost"></div>
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
-        <img src="images/corner_deco.png" class="corner-deco corner-bm" alt="">
         <div class="container section-inner">
             <div class="collaboration-single">
                 <h2>Lets work together</h2>
-                <p>Development and guidance for any technical project, query or path. From app development to cyber
-                    security measures.</p>
+                <p>Development and guidance for any technical project, query or path. </p>
+                <p>From app development to cyber security measures.</p>
 
                 <a href="mailto:max.mckone@gmail.com?subject=Tech Topology 1-on-1 Booking" class="button">Reach Out</a>
 
@@ -119,15 +120,31 @@
                     <small id="dropHint">.pdf, .png, .jpg</small>
                 </div>
                 <input type="file" id="collabUpload" accept=".pdf,.png,.jpg,.jpeg" hidden>
+
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/max-mckone-08141414a/" target="_blank" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/Max-McKone" target="_blank" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="pixelary-footer">
-        <div class="footer-socials">
-            <a href="https://www.linkedin.com/in/max-mckone-08141414a/" target="_blank">LinkedIn</a>
-            <a href="https://github.com/Max-McKone" target="_blank">GitHub</a>
-        </div>
         <p>copyright Max McKone 2026. All rights reserved.</p>
     </footer>
 
@@ -160,7 +177,7 @@
         function openMail(file) {
             const subject = 'Tech Topology 1-on-1 Booking';
             const body = `Hi Max,%0D%0A%0D%0APlease find my project file attached: ${encodeURIComponent(file.name)}%0D%0A%0D%0AThanks!`;
-            const mailto = `mailto:max@maxmckone.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+            const mailto = `mailto:max.mckone@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
             window.location.href = mailto;
         }
 
