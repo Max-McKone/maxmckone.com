@@ -22,9 +22,10 @@
     </nav>
 
     <section id="hero">
-        <video autoplay muted loop playsinline id="hero-video" poster="images/topology_placeholder.png">
+        <img src="images/topology_placeholder.png" id="hero-poster" alt="">
+        <video muted loop playsinline id="hero-video">
             <source src="images/topology_loop.mov" type="video/quicktime">
-            Your browser does not support the video tag.
+            <source src="images/topology_loop.mp4" type="video/mp4">
         </video>
         <img src="images/corner_deco.png" class="corner-deco corner-tl" alt="">
         <img src="images/corner_deco.png" class="corner-deco corner-tr" alt="">
@@ -93,6 +94,14 @@
             <p>I believe in empowering you to understand the lay of the land, anticipate changes, and
                 adapt with confidence. Whether youre a complete beginner or looking to deepen your expertise, lets
                 journey together through this dynamic terrain.</p>
+            <div class="course-buttons">
+                <a href="/courses/intro/" class="button button-primary" id="btn-intro-course">
+                    Intro Course <span class="btn-tag">Free</span>
+                </a>
+                <a href="#" class="button button-outline" id="btn-full-course" aria-disabled="true">
+                    Full Course <span class="btn-tag btn-tag-paid">Coming Soon</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -113,7 +122,8 @@
                 <p>Development and guidance for any technical project, query or path. </p>
                 <p>From app development to cyber security measures.</p>
 
-                <a href="mailto:max.mckone@gmail.com?subject=Tech Topology 1-on-1 Booking" class="button">Reach Out</a>
+                <a href="mailto:max.mckone@gmail.com?subject=Tech Topology 1-on-1 Booking"
+                    class="button button-primary">Reach Out</a>
 
                 <div class="drop-zone" id="dropZone" tabindex="0">
                     <p id="dropText">Your project here:</p>
@@ -218,6 +228,40 @@
         fileInput.addEventListener('change', () => {
             handleFiles(fileInput.files);
         });
+
+        // ── Hero video: show poster then fade to video when ready ──
+        (function () {
+            const heroVideo = document.getElementById('hero-video');
+            const heroPoster = document.getElementById('hero-poster');
+            let revealed = false;
+
+            function showVideo() {
+                if (revealed) return;
+                revealed = true;
+                heroVideo.classList.add('video-ready');
+                heroPoster.style.opacity = '0';
+                setTimeout(() => { heroPoster.style.display = 'none'; }, 900);
+            }
+
+            function tryPlay() {
+                heroVideo.play().then(showVideo).catch(() => {
+                    // Autoplay blocked or format unsupported — keep poster visible
+                });
+            }
+
+            // Listen on multiple events — .mov may not fire 'canplay' in Chrome/Firefox
+            ['canplay', 'loadeddata', 'canplaythrough'].forEach(evt => {
+                heroVideo.addEventListener(evt, function handler() {
+                    heroVideo.removeEventListener(evt, handler);
+                    tryPlay();
+                }, { once: true });
+            });
+
+            // Fallback: attempt play after 3 s regardless
+            setTimeout(() => { if (!revealed) tryPlay(); }, 3000);
+
+            heroVideo.load();
+        })();
 
         // ── Section legend scroll tracker ──────────────────────
         (function () {
