@@ -733,3 +733,20 @@ footer {
         display: none;
     }
 }
+
+/* ── Hero email link ────────────────────────────────────── */
+a.hero-email {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-family: inherit;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    letter-spacing: 0.04em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+a.hero-email:hover {
+    opacity: 1;
+}
